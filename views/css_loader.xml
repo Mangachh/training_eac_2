@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- Load css File -->
+    <template id="row_column_asset_css" name="row_column_asset_css" inherit_id="web.assets_backend">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/training/static/src/css/row_columns.css"/>
+      </xpath>
+    </template>
+  </data>
+</odoo>

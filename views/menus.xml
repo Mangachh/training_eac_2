@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="Training" id="training.menu_root" sequence="16" web_icon="training,static/description/icon.png"/>
+
+    <!-- menu categories -->
+
+    <!-- Formative action ticket -->
+    <menuitem name="Formative Action" id="training.formative_action_menu" parent="training.menu_root"
+              action="training.formative_action_action_window"/>
+
+    <!-- setup action, it shows different menus -->
+    <menuitem name="Setup" id="training.setup_menu" parent="training.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Catalogue" id="training.menu_1_list" parent="training.setup_menu"
+              action="training.catalogue_action_window"/>
+
+</odoo>

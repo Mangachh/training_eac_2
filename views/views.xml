@@ -1,0 +1,112 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!-- VIEW LIST!! -->
+    <!-- Formative_action list tree-->
+    <record model="ir.ui.view" id="training.formative_action_list">
+      <field name="name">Formative Action list</field>
+      <field name="model">training.formative_action</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="start_date"/>
+          <field name="course_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Catalogue list tree-->
+    <record model="ir.ui.view" id="training.catalogue_list">
+      <field name="name">Catalogue list</field>
+      <field name="model">training.catalogue</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="no_hours"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- INPUT FORMS -->
+    <!-- catalogue input form -->
+    <record model="ir.ui.view" id="training.catalogue_form">
+      <field name="name">Catalogue form</field>
+      <field name="model">training.catalogue</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+              <!-- name & is_active group -->
+
+              <div class="row">
+                <div class="column title">
+                    <field name="name" required="True"/>
+                </div>
+                <div class="column">
+                  <field name="is_active" invisible="1"/>
+                  <button type="object" name="change_is_active" string="  Active"
+                          icon="/training/static/src/icons/reshot-check.svg" attrs="{'invisible': [('is_active','=', True)]}"/>
+                  <button type="object" name="change_is_active" string="  Inactive"
+                          icon="/training/static/src/icons/reshot-wrong.svg" attrs="{'invisible': [('is_active','=', False)]}"/>
+                </div>
+              </div>
+            <group>
+              <field name="description"/>
+              <field name="no_hours"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Formative Actions input form -->
+    <record model="ir.ui.view" id="training.formative_action_form">
+      <field name="name">Formative Action form</field>
+      <field name="model">training.formative_action</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Course">
+              <h1>
+                <field name="course_id" placeholder="Select Course name" required="True"/>
+              </h1>
+            </group>
+            <group string="Details">
+              <group>
+                <field name="start_date" placeholder="Select Start Date" required="True"/>
+                <field name="session_time"/>
+              </group>
+              <group>
+                <field name="no_hours"/>
+                <field name="no_sessions"/>
+              </group>
+            </group>
+            <group string="People">
+              <field name="trainer_id"/>
+              <field name="participants"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+<!-- ACTIONS ON OPENING -->
+    <!-- catalogue action window -->
+    <record model="ir.actions.act_window" id="training.catalogue_action_window">
+      <field name="name">Catalogue</field>
+      <field name="res_model">training.catalogue</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Formative action window-->
+    <record model="ir.actions.act_window" id="training.formative_action_action_window">
+      <field name="name">Formative Actions</field>
+      <field name="res_model">training.formative_action</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+<!-- MENU ITEMS -->
+
+
+
+
+  </data>
+</odoo>
