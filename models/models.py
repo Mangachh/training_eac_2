@@ -5,6 +5,7 @@ import base64
 import random as rd
 import math
 
+
 class Catalogue(models.Model):
     _name = 'training.catalogue'
     _description = 'The catalogue class'
@@ -33,11 +34,9 @@ class FormativeAction(models.Model):
     trainer_id = fields.Many2one(comodel_name='res.partner', string="Trainee")
     session_time = fields.Integer(string="Session time")
 
-    # estos dos son calculados
-    no_hours = fields.Integer(string="Total Course Hours",
-    			     compute='_calculate_no_hours')
     no_sessions = fields.Char(string="Number of sessions",
     			     compute='_calculate_no_sessions')
+    no_hours = fields.Integer(string="Total Course Hours", related="course_id.no_hours")
 
     
     @api.onchange('session_time')
@@ -50,9 +49,4 @@ class FormativeAction(models.Model):
                 record.no_sessions = 0
 
 
-    @api.onchange('course_id')
-    def _calculate_no_hours(self) -> None:
-        for record in self:
-            record.no_hours = record.course_id.no_hours
-            
     
